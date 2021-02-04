@@ -1,0 +1,89 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 10px;
+  font-family: monospace;
+}
+
+$how-many-items: 3;
+$width-half-circle: 60px;
+$height-half-circle: $width-half-circle / 2;
+$border-top-radius: $height-half-circle + 10px;
+
+.container {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  display: flexbox;
+  overflow-y: hidden;
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  @media (min-width: 720px) {
+    overflow-y: auto;
+    max-width: 720px;
+    margin: auto;
+  }
+  ul {
+    width: calc((100% * #{$how-many-items}) - (65px * #{$how-many-items}));
+    display: flex;
+    justify-content: space-between;
+    margin: 50px auto;
+    @media (min-width: 720px) {
+      width: 100%;
+    }
+    li {
+      list-style-type: none;
+      display: flex;
+      position: relative;
+      justify-content: flex-start;
+      width: calc(100% - 20px);
+      height: auto;
+      margin: 0 5px 0;
+      padding: 15px 10px;
+      box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.14);
+      border: 1px solid #e5e5e5;
+      border-radius: 10px;
+      color: #007d8f;
+      span {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        width: $width-half-circle;
+        height: $height-half-circle;
+        border-top-left-radius: $border-top-radius;
+        border-top-right-radius: $border-top-radius;
+        border: 1px solid #e5e5e5;
+        border-bottom: 0;
+        top: -#{$height-half-circle};
+        left: 30px;
+        background: #ffffff;
+        padding: 10px 0 0;
+        font-size: 1.6rem;
+        font-weight: 500;
+        color: #007d8f;
+      }
+      div {
+        padding: 0 15px;
+        h2 {
+          font-size: 1.4rem;
+        }
+        p {
+          color: #454545;
+          font-weight: 100;
+          font-size: 1.2rem;
+          line-height: 1.36;
+        }
+      }
+      @media (min-width: 720px) {
+        max-width: 350px;
+      }
+    }
+  }
+}
